@@ -1,7 +1,9 @@
 #pragma once
 #include "gameObject.h"
-class snake :
+class snakeTail :
     public gameObject
 {
+public:
+    gameObject* next;
 };
 

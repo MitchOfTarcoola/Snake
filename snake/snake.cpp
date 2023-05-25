@@ -3,16 +3,19 @@
 
 #include <iostream>
 #include "raylib.h"
-#include "snake.h"
 #include <list>
 #include <random>
+#include "gameObject.h"
+#include "food.h"
+#include "snakeHead.h"
+#include "global.h"
 using namespace std;
 
 bool _snakecolour = false; //used for making the tail pattern
 
-int width = 20; //size of arena. includes walls
-int height = 20;
-int tileSize = 30;
+//const int width = 20; //size of arena. includes walls
+//const int height = 20;
+//const int tileSize = 30;
 
 int isPlaying = true;
 
