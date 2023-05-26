@@ -7,6 +7,8 @@ class food :
 	public gameObject
 {
 public:
+	food(Color colour);
+
 	void place();
 };
 

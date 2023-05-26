@@ -41,12 +41,24 @@ void snakeHead::Move(int dir) {
 	default:
 		break;
 	}
+	for (snakeTail* i = next; i != this; i = i->next) //check for tail collision
+	{
+		if (i->Location == Location)
+		{
+			isPlaying = false;
+			break;
+		}
+	}
+	if ((Location <= width) || (Location >= height * (width - 1) - 1 || (Location+1) % width <= 1)) { //hit wall
+			isPlaying = false;
+		}
 
 	if (Location == Food->Location) //hit food
 	{
 		Grow();
 		Food->place();
 	}
+	
 }
 
 void snakeHead::Draw() {
@@ -54,6 +66,7 @@ void snakeHead::Draw() {
 	{
 		i->Draw();
 	}
+	Food->Draw();
 	gameObject::Draw();
 
 }
