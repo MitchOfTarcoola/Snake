@@ -9,19 +9,21 @@
 #include "food.h"
 #include "snakeHead.h"
 #include "global.h"
+#include <string>
 using namespace std;
 
-bool _snakecolour = false; //used for making the tail pattern
+//bool _snakecolour = false; //used for making the tail pattern
 
 //const int width = 20; //size of arena. includes walls
 //const int height = 20;
 //const int tileSize = 30;
 
 //int isPlaying = true;
+bool hasStarted = false;
 
 int currentFrame; //used for speed calc
 
-int framesPerMove = 15;
+int framesPerMove = 5;
 int moveDir = 0; //0 = up, 1 = left, 2 = down, 3 = right
 
 //int curLength = 1; //snake vars
@@ -32,8 +34,8 @@ int moveDir = 0; //0 = up, 1 = left, 2 = down, 3 = right
 //int food;
 
 
-snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
-
+//snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
+snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{ORANGE, YELLOW, GREEN, BLUE, PURPLE}, new food(WHITE));
 
 //int getX(int pos) { //convert location id to x and y
 //	return pos % width;
@@ -74,6 +76,7 @@ snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{C
 
 int main()
 {
+
 	srand((unsigned)time(0)); //setup RNG
 
 	Snake.Grow();
@@ -86,7 +89,30 @@ int main()
 
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
-		if (Snake.isPlaying) {
+		if (!hasStarted)
+		{
+			if (IsKeyPressed(KEY_W)) //movement keys
+			{
+				moveDir = 0;
+				hasStarted = true;
+			}
+			if (IsKeyPressed(KEY_S))
+			{
+				moveDir = 2;
+				hasStarted = true;
+			}
+			if (IsKeyPressed(KEY_A))
+			{
+				moveDir = 1;
+				hasStarted = true;
+			}
+			if (IsKeyPressed(KEY_D))
+			{
+				moveDir = 3;
+				hasStarted = true;
+			}
+		}
+		if (Snake.isPlaying && hasStarted) {
 
 			if (IsKeyPressed(KEY_W) && moveDir != 2) //movement keys
 			{
@@ -168,7 +194,8 @@ int main()
 
 		BeginDrawing();
 		ClearBackground(DARKGRAY); //wall
-		
+		DrawText("Score:", 0, 0, tileSize, YELLOW);
+		DrawText(to_string(Snake.Score).c_str(), tileSize * 3.5, 0, tileSize, YELLOW);
 		for (int i = 1; i < width-1; i++)
 		{
 			for (int j = 1; j < height-1; j++)

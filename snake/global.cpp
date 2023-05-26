@@ -4,6 +4,6 @@
 // You must include global.h so that the compiler matches it to the correct
 // one, and doesn't implicitly convert it to static.
 
-int width = 20; //size of arena. includes walls
-int height = 20;
-int tileSize = 30;
+int width = 30; //size of arena. includes walls
+int height = 30;
+int tileSize = 25;

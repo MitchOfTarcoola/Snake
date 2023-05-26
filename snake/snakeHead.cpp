@@ -9,6 +9,7 @@ snakeHead::snakeHead(int id, Color colour, list<Color> tailCol, food* Foood) {
 	next = this;
 	tailColours = tailCol;
 	nextTailCol = tailColours.begin();
+	Score = 0;
 }
 snakeHead::~snakeHead() {
 	snakeTail* j = next;
@@ -57,6 +58,7 @@ void snakeHead::Move(int dir) {
 	{
 		Grow();
 		Food->place();
+		Score++;
 	}
 	
 }

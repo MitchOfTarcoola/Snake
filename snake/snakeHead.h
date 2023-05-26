@@ -16,6 +16,7 @@ public:
     list<Color> tailColours;
     list<Color>::iterator nextTailCol;
     bool isPlaying = true;
+    int Score;
 
     void Move(int dir);
     void Draw();
