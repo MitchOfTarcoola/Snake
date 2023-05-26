@@ -7,8 +7,9 @@ public:
 	int Location; //all objects have a location and colour
 	Color Colour;
 
-	
-	virtual ~gameObject();
+	gameObject();
+	gameObject(int id, Color colour); //constructors and destructor
+	~gameObject() = default;
 
 	void Draw();
 	int getX();

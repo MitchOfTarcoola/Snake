@@ -1,9 +1,17 @@
 #include "gameObject.h"
 
 
+gameObject::gameObject() {
+	Location = 0;
+	Colour = PINK;
+}
+
+gameObject::gameObject(int id, Color colour) {
+	Location = id;
+	Colour = colour;
+}
 
 
-gameObject::~gameObject() {}
 
 
 void gameObject::Draw() { //draw this object
