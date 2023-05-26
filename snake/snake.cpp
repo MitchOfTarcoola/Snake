@@ -216,6 +216,10 @@ int main()
 		//draw(snake, RED); //draw head
 
 		//draw(food, ORANGE); //draw food
+		if (!Snake.isPlaying)
+		{
+			DrawText("GAME OVER", width/2*tileSize-tileSize*12, height / 2 * tileSize - tileSize*2, tileSize*4, RED);
+		}
 
 		EndDrawing();
 	}
