@@ -34,8 +34,7 @@ int moveDir = 0; //0 = up, 1 = left, 2 = down, 3 = right
 //int food;
 
 
-//snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
-snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{ORANGE, YELLOW, GREEN, BLUE, PURPLE}, new food(WHITE));
+
 
 //int getX(int pos) { //convert location id to x and y
 //	return pos % width;
@@ -78,6 +77,9 @@ int main()
 {
 
 	srand((unsigned)time(0)); //setup RNG
+
+	//snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
+	snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{ORANGE, YELLOW, GREEN, BLUE, PURPLE}, new food(WHITE));
 
 	Snake.Grow();
 	Snake.Grow();
