@@ -2,6 +2,10 @@
 
 
 
+
+gameObject::~gameObject() {}
+
+
 void gameObject::Draw() { //draw this object
 	DrawRectangle(getX() * tileSize, getY() * tileSize, tileSize, tileSize, Colour);
 }

@@ -4,6 +4,9 @@ class snakeTail :
     public gameObject
 {
 public:
-    gameObject* next;
+    snakeTail *next;
+
+
+    void Move();
 };
 

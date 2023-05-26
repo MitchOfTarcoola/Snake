@@ -4,13 +4,16 @@
 class gameObject
 {
 public:
-	int Location;
+	int Location; //all objects have a location and colour
 	Color Colour;
+
+	
+	virtual ~gameObject();
 
 	void Draw();
 	int getX();
 	int getY();
 private:
-	const int TileSize;
+	
 };
 
