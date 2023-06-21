@@ -78,8 +78,8 @@ int main()
 
 	srand((unsigned)time(0)); //setup RNG
 
-	//snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
-	snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{ORANGE, YELLOW, GREEN, BLUE, PURPLE}, new food(WHITE));
+	snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
+	//snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{ORANGE, YELLOW, GREEN, BLUE, PURPLE}, new food(WHITE));
 
 	Snake.Grow();
 	Snake.Grow();
