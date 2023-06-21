@@ -24,7 +24,6 @@ void snakeHead::Move(int dir) {
 	{
 		i->Move();
 	}
-	//add head move code here
 	switch (dir) //move forward
 	{
 	case 0:

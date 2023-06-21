@@ -12,65 +12,12 @@
 #include <string>
 using namespace std;
 
-//bool _snakecolour = false; //used for making the tail pattern
-
-//const int width = 20; //size of arena. includes walls
-//const int height = 20;
-//const int tileSize = 30;
-
-//int isPlaying = true;
 bool hasStarted = false;
 
 int currentFrame; //used for speed calc
 
 int framesPerMove = 5;
 int moveDir = 0; //0 = up, 1 = left, 2 = down, 3 = right
-
-//int curLength = 1; //snake vars
-//int snakeLength = 3;
-//int snake = width/2 + width * (height/2);
-//list<int> body;
-
-//int food;
-
-
-
-
-//int getX(int pos) { //convert location id to x and y
-//	return pos % width;
-//}
-//
-//int getY(int pos){
-//	return pos / width;
-//	}
-
-//void draw(int id, Color color) { //draw tile
-//	DrawRectangle(getX(id) * tileSize, getY(id) * tileSize, tileSize, tileSize, color);
-//}
-
-//void placeFood() { //places food in playing area, but not on snake. (currently causes overflow if you somehow fill the board with snake)
-//	food = rand() % (width * (height - 2) + height); //wont try top/bottom row
-//	if (food == snake) //on head
-//	{
-//		placeFood();
-//		return;
-//	}
-//
-//	list<int>::iterator it;
-//	for (it = body.begin(); it != body.end(); ++it) //on tail
-//	{
-//		if (*it == food)
-//		{
-//			placeFood();
-//			return;
-//		}
-//	}
-//
-//	if ((food <= width) || (food >= height * (width - 1) - 1 || (food + 1) % width <= 1)) { //on edge
-//		placeFood();
-//		return;
-//	}
-//}
 
 
 int main()
@@ -79,11 +26,9 @@ int main()
 	srand((unsigned)time(0)); //setup RNG
 
 	snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{Color{ 0,200, 40, 255 }, Color{ 0,220, 40, 255 }}, new food(ORANGE));
-	//snakeHead Snake = snakeHead(width / 2 + width * (height / 2), RED, list<Color>{ORANGE, YELLOW, GREEN, BLUE, PURPLE}, new food(WHITE));
 
 	Snake.Grow();
 	Snake.Grow();
-	//placeFood();
 
 	InitWindow(width*tileSize, height*tileSize, "SNAKE");
 
@@ -132,65 +77,14 @@ int main()
 			{
 				moveDir = 3;
 			}
-			/*if (IsKeyPressed(KEY_Q)) //debug, removes end of tail
-			{
-				if (!body.empty()) { body.pop_back(); }
 
-			}*/
 			currentFrame++;
 			if (currentFrame >= framesPerMove) //runs every <framesPerMove> frames
 			{
 				Snake.Move(moveDir);
 
 				currentFrame = 0;
-				//switch (moveDir) //move forward
-				//{
-				//case 0:
-				//	body.push_front(snake); //head sq. becomes front of tail
-				//	snake -= width;
-				//	break;
-				//case 1:
-				//	body.push_front(snake);
-				//	snake -= 1;
-				//	break;
-				//case 2:
-				//	body.push_front(snake);
-				//	snake += width;
-				//	break;
-				//case 3:
-				//	body.push_front(snake);
-				//	snake += 1;
-				//	break;
-				//default:
-				//	break;
-				//}
 
-				//if (snake == food) //hit food
-				//{
-				//	snakeLength++;
-				//	placeFood();
-				//}
-
-				//curLength++;
-				//if (curLength > snakeLength) //update tail (remove end if no food)
-				//{
-				//	curLength--;
-				//	if (!body.empty()) { body.pop_back(); }
-				//}
-				//if ((snake <= width) || (snake >= height * (width - 1) - 1 || (snake+1) % width <= 1)) { //hit wall
-				//	isPlaying = false;
-				//	
-				//}
-				//
-				//list<int>::iterator it;
-				//for (it = body.begin(); it != body.end(); ++it) //hit tail
-				//{
-				//	if (*it == snake)
-				//	{
-				//		isPlaying = false;
-				//		
-				//	}
-				//}
 			}
 		}
 
@@ -208,16 +102,7 @@ int main()
 		}
 		Snake.Draw();
 
-		//list<int>::iterator it;
-		//_snakecolour = false;
-		//for ( it = body.begin(); it != body.end(); ++it)
-		//{
-		//	_snakecolour = !_snakecolour;
-		//	draw(*it, (_snakecolour) ?  Color{ 0,200, 40, 255 } : Color{0,220, 40, 255}); //draw tail
-		//}
-		//draw(snake, RED); //draw head
 
-		//draw(food, ORANGE); //draw food
 		if (!Snake.isPlaying)
 		{
 			DrawText("GAME OVER", width/2*tileSize-tileSize*12, height / 2 * tileSize - tileSize*2, tileSize*4, RED);
